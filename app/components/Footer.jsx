@@ -1,29 +1,122 @@
-import React from 'react'
-import {FaInstagram, FaLinkedin, FaPhone, FaMail} from 'react-icons/fa'
-import {LuMail} from 'react-icons/lu'
-const Footer = () => {
-  return (
-    <div className='bg-gray-100 h-1/2 w-full flex md:flex-row flex-col justify-around items-start p-20'>
-        <div className='p-5'>
-            <ul>
-                <p className='text-gray-800 font-bold text-3xl pb-6'>Zenan<span className='text-green-600'>Zahmeti</span></p>
-                <div className='flex gap-6 pb-5'>
-                    <FaLinkedin className='text-2xl curser-pointer hover:text-gray-500' />
-                    <FaInstagram className='text-2xl curser-pointer hover:text-gray-500' />
-                    <FaPhone className='text-2xl curser-pointer hover:text-gray-500' />
-                    <LuMail className='text-2xl curser-pointer hover:text-gray-500' />
-                </div>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <p>category</p>
-                <li>el ishleri</li>
-                <li>tikin</li>
-            </ul>
-        </div>
-    </div>
-  )
-}
+'use client'
+import React, { useState } from "react";
+import { FaInstagram, FaLinkedin, FaPhone } from "react-icons/fa";
+import { LuMail } from "react-icons/lu";
 
-export default Footer
+export default function Footer() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  const closeDropdown = () => setIsOpen(false);
+
+  return (
+    <footer className="bg-gray-100 w-full flex md:flex-row flex-col justify-around items-start p-10 md:p-20 ">
+      {/* Brand & Social */}
+      <div>
+        <p className="text-gray-800 font-bold text-3xl pb-6">
+          Zenan<span className="text-green-600">Zahmeti</span>
+        </p>
+
+        <div className="flex gap-6 pb-5">
+          <FaLinkedin className="text-2xl cursor-pointer hover:text-gray-500" />
+          <FaInstagram className="text-2xl cursor-pointer hover:text-gray-500" />
+          <FaPhone className="text-2xl cursor-pointer hover:text-gray-500" />
+          <LuMail className="text-2xl cursor-pointer hover:text-gray-500" />
+        </div>
+      </div>
+
+      {/* Menu */}
+      <div>
+        <p className="text-gray-800 font-bold text-2xl pb-4">Menu</p>
+        <ul>
+          {["Home", "Explore", "Profile", "Sign In"].map((item) => (
+            <li
+              key={item}
+              className="cursor-pointer text-gray-500 pb-1 hover:text-black"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Support */}
+      <div>
+        <p className="text-gray-800 font-bold text-2xl pb-4">Support</p>
+        <ul>
+          {["FAQ", "Contact", "Help Center"].map((item) => (
+            <li
+              key={item}
+              className="cursor-pointer text-gray-500 pb-1 hover:text-black"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Explore */}
+      <div>
+        <p className="text-gray-800 font-bold text-2xl pb-4">Explore</p>
+        <ul>
+          {["Categories", "New Listings"].map((item) => (
+            <li
+              key={item}
+              className="cursor-pointer text-gray-500 pb-1 hover:text-black"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Dropdown */}
+      <div className="relative inline-block mt-8 md:mt-0">
+        <button
+          type="button"
+          onClick={toggleDropdown}
+          className="px-4 py-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm inline-flex items-center"
+        >
+          Dropdown
+          <svg
+            className="w-2.5 h-2.5 ml-2.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 10 6"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="m1 1 4 4 4-4"
+            />
+          </svg>
+        </button>
+
+        {isOpen && (
+          <div className="origin-top-right absolute right-0 mt-2 w-44 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+            <ul
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="options-menu"
+            >
+              {["Option 1", "Option 2", "Option 3"].map((option) => (
+                <li key={option}>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={closeDropdown}
+                  >
+                    {option}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </footer>
+  );
+}
