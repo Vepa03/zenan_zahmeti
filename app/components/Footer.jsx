@@ -14,7 +14,7 @@ export default function Footer() {
       {/* Brand & Social */}
       <div>
         <p className="text-gray-800 font-bold text-3xl pb-6">
-          Zenan<span className="text-green-600">Zahmeti</span>
+          Zenan<span className="text-green-600">Zähmeti</span>
         </p>
 
         <div className="flex gap-6 pb-5">
@@ -75,9 +75,9 @@ export default function Footer() {
         <button
           type="button"
           onClick={toggleDropdown}
-          className="px-4 py-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm inline-flex items-center"
+          className="px-4 py-2 text-white font-bold bg-black hover:bg-gray focus:ring-4 focus:outline-none focus:ring-blue-100  rounded-lg text-sm inline-flex items-center"
         >
-          Dropdown
+          English
           <svg
             className="w-2.5 h-2.5 ml-2.5"
             aria-hidden="true"
@@ -96,13 +96,13 @@ export default function Footer() {
         </button>
 
         {isOpen && (
-          <div className="origin-top-right absolute right-0 mt-2 w-44 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+          <div className="origin-top-right absolute right-0 mt-2 w-44 rounded-lg shadow-lg bg-white ring-1  ring-opacity-5 font-bold">
             <ul
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="options-menu"
             >
-              {["Option 1", "Option 2", "Option 3"].map((option) => (
+              {["Russian", "Turkmen"].map((option) => (
                 <li key={option}>
                   <a
                     href="#"

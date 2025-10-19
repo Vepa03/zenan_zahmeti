@@ -24,7 +24,7 @@ export default function Navbar() {
       <div className="w-full px-5 lg:px-8 xl:px-[8%] h-20 flex items-center justify-between">
         {/* Logo */}
         <p className="text-gray-800 font-bold text-3xl flex items-center">
-          Zenan<span className="text-green-600 ml-1">Zahmeti</span>
+          Zenan<span className="text-green-600 ml-1">Zähmeti</span>
         </p>
 
         {/* Search */}
