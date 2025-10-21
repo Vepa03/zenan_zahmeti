@@ -54,12 +54,6 @@ export default function Navbar() {
           >
             <MdFavoriteBorder className="text-black w-6 h-6" />
           </button>
-          <button
-            className="rounded-full p-2 hover:bg-gray-100 flex items-center justify-center"
-            aria-label="Basket"
-          >
-            <SlBasket className="text-black w-6 h-6" />
-          </button>
           <button className="border rounded-full px-6 py-2 border-gray-500">
             Sign In
           </button>
