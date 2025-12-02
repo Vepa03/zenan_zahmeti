@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
         
         // 2. destination: İsteğin gerçekte yönlendirileceği API adresi
         // :path* sayesinde /api/products -> http://34.61.30.58:8001/products'a gider.
-        destination: 'http://34.61.30.58:8001/:path*',
+        destination: 'http://http://34.10.166.242:8001/:path*',
       },
     ];
   },
