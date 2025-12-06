@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 async function getProducts(): Promise<Product[]> {
   try {
     const res = await fetch(API_URL, {
-      next: { revalidate: 60 }, // istersen cache: "no-store" yapabilirsin
+      next: { revalidate: 60 }, 
     });
 
     if (!res.ok) {
@@ -20,7 +20,7 @@ async function getProducts(): Promise<Product[]> {
         res.status,
         await res.text()
       );
-      return []; // Hata olsa bile boş array döndür → build düşmesin
+      return []; 
     }
 
     return res.json();
