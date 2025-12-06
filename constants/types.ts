@@ -1,6 +1,5 @@
-// src/constants/types.ts
-
-export interface Image {
+// types/product.ts
+export interface ProductImage {
   id: number;
   product_id: number;
   image: string;
@@ -15,14 +14,10 @@ export interface Product {
   price: string;
   currency: string;
   description: string;
-  images: Image[];
+  images: ProductImage[];
   category_id: number;
-  category_name: string; // Filtre için kullanışlı
-}
-
-// Görseldeki gibi basit bir kategori listesi için (API'den geliyorsa da bu yapıya uyar)
-export interface Category {
-    id: number;
-    name: string;
-    slug: string;
+  category_name: string;
+  shop_name: string;
+  location: string;
+  phone_number: string;
 }
