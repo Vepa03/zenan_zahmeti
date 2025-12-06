@@ -4,16 +4,30 @@ import ProductsWithFilter from "@/components/CategoryFilter";
 
 const API_URL = "http://34.10.166.242:8001/products";
 
+// Bu sayfanın build sırasında pre-render edilmesini engeller.
+// Böylece API'ye erişilemediğinde Vercel build'i çökmez.
+export const dynamic = "force-dynamic";
+
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch(API_URL, {
-    next: { revalidate: 60 }, // 60 sn'de bir yeniden fetch et (ISR)
-  });
+  try {
+    const res = await fetch(API_URL, {
+      next: { revalidate: 60 }, // istersen cache: "no-store" yapabilirsin
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
+    if (!res.ok) {
+      console.error(
+        "SERVER LOG >>> products fetch failed:",
+        res.status,
+        await res.text()
+      );
+      return []; // Hata olsa bile boş array döndür → build düşmesin
+    }
+
+    return res.json();
+  } catch (err) {
+    console.error("SERVER LOG >>> products fetch error:", err);
+    return []; // Network hatasında da boş array döndür
   }
-
-  return res.json();
 }
 
 export default async function ProductsPage() {
